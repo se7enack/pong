@@ -112,11 +112,11 @@ while not p1.score >= endgame or p2.score >= endgame:
         scoreboard.clear()
         scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=('Helvetica',26,"normal"))
         
-    if(puck.xcor() > 340) and (puck.xcor() < 350) and (puck.ycor() < player2.ycor() + 40 and puck.ycor() > player2.ycor() - 40):
+    if (puck.xcor() > 340) and (puck.xcor() < 350) and (puck.ycor() < player2.ycor() + 40 and puck.ycor() > player2.ycor() - 40):
         puck.setx(340)
         puck_x = puck_x * -1
 
-    if(puck.xcor() < -340) and (puck.xcor() > -350) and (puck.ycor() < player1.ycor() + 40 and puck.ycor() > player1.ycor() - 40):
+    if (puck.xcor() < -340) and (puck.xcor() > -350) and (puck.ycor() < player1.ycor() + 40 and puck.ycor() > player1.ycor() - 40):
         puck.setx(-340)
         puck_x = puck_x * -1
         
