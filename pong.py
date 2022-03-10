@@ -47,7 +47,7 @@ puck.shape('circle')
 puck.color('white')
 puck.penup()
 puck.goto(0,0)
-speed = .33
+speed = .4
 puck_x = speed
 puck_y = speed
 
@@ -57,7 +57,7 @@ scoreboard.color('white')
 scoreboard.penup()
 scoreboard.hideturtle()
 scoreboard.goto(0,260)
-scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=('Helvetica',26,"normal"))
+scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=("Helvetica",26,"normal"))
 
 def player1_up():
     y = player1.ycor()
@@ -85,6 +85,8 @@ screen.onkeypress(player1_down,"s")
 screen.onkeypress(player2_up,"Up")
 screen.onkeypress(player2_down,"Down")
 
+print("#####################################")
+
 while not p1.score >= endgame or p2.score >= endgame:
     screen.update()
     puck.setx(puck.xcor() + puck_x)
@@ -104,6 +106,9 @@ while not p1.score >= endgame or p2.score >= endgame:
         p1.score = p1.score + 1
         scoreboard.clear()
         scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=('Helvetica',26,"normal"))
+        print("# Player1:",p1.score,"| Player2:",p2.score,"| Goal:",endgame,"#")
+        if p1.score >= endgame:
+            break        
         
     if puck.xcor() < -390:
         puck.goto(0,0)
@@ -111,7 +116,9 @@ while not p1.score >= endgame or p2.score >= endgame:
         p2.score = p2.score + 1
         scoreboard.clear()
         scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=('Helvetica',26,"normal"))
-        
+        print("# Player1:",p1.score,"| Player2:",p2.score,"| Goal:",endgame,"#")
+        if p2.score >= endgame:
+            break
     if (puck.xcor() > 340) and (puck.xcor() < 350) and (puck.ycor() < player2.ycor() + 40 and puck.ycor() > player2.ycor() - 40):
         puck.setx(340)
         puck_x = puck_x * -1
@@ -131,10 +138,17 @@ while not p1.score >= endgame or p2.score >= endgame:
           
     if player2.ycor() < -250:
         player2.sety(-250)
-             
+
+print("#####################################")
+
+if p1.score > p2.score:
+    print(p1.name, "wins!") 
+else:
+    print(p2.name, "wins!")
+            
 scoreboard.clear()
 screen.title("GAME OVER")
 screen.bgcolor('red')
-scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=('Helvetica',26,"normal"))
+scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=("Helvetica",26,"normal"))
 playsound('end.wav')
 time.sleep(2)
