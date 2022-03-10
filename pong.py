@@ -4,7 +4,7 @@ import turtle as t
 from playsound import playsound
 import time
 
-endgame=3
+endgame=5
 
 class player():
     def __init__(self, name, score):
