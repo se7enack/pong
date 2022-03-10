@@ -4,7 +4,7 @@ import turtle as t
 from playsound import playsound
 import time
 
-endgame=7
+endgame=3
 
 class player():
     def __init__(self, name, score):
@@ -147,8 +147,8 @@ else:
     print(p2.name, "wins!")
             
 scoreboard.clear()
+scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=("Helvetica",26,"normal"))
 screen.title("GAME OVER")
 screen.bgcolor('red')
-scoreboard.write(p1.name + " {}   ".format(p1.score) + p2.name + " {}".format(p2.score),align="center",font=("Helvetica",26,"normal"))
 playsound('end.wav')
 time.sleep(2)
